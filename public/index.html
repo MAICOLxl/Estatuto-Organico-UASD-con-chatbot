@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Consultor de Estatutos UASD</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .chat-height { height: calc(100vh - 180px); }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    
+    /* Animación de carga */
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 0.4; }
+      50% { opacity: 1; }
+    }
+    .loading-dots span {
+      animation: pulse-dot 1.4s infinite;
+    }
+    .loading-dots span:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+    .loading-dots span:nth-child(3) {
+      animation-delay: 0.4s;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 h-screen flex flex-col">
+  <header class="bg-[#002d72] text-white p-4 shadow-md flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-[#002d72] font-bold text-xl">U</div>
+      <div>
+        <h1 class="font-bold text-lg leading-tight">UASD AI - Cesar Leonardo 100614752</h1>
+        <p class="text-xs opacity-80 text-blue-200 flex items-center gap-1">
+          <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+          Consultor de Estatutos
+        </p>
+      </div>
+    </div>
+  </header>
+
+  <main id="chat-container" class="flex-1 overflow-y-auto p-4 md:p-8 space-y-4 chat-height">
+    <div class="flex justify-start mb-4">
+      <div class="max-w-[85%] md:max-w-[70%] p-4 bg-white text-gray-800 rounded-r-lg rounded-tl-lg border border-gray-200 shadow-sm">
+        <p class="text-xs font-bold mb-2 opacity-70 text-blue-800">Asistente UASD</p>
+        <div class="text-sm leading-relaxed space-y-2">
+          <p>👋 ¡Hola! Soy el Asistente de Consultas de la UASD.</p>
+          <p>Puedo responder preguntas sobre el <strong>Estatuto Orgánico de la Universidad Autónoma de Santo Domingo</strong>.</p>
+          <p>💡 <em>Utiliza los botones sugeridos abajo o escribe tu propia pregunta.</em></p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="p-4 bg-white border-t border-gray-200">
+    <div class="max-w-4xl mx-auto mb-4 flex gap-2 overflow-x-auto pb-2 no-scrollbar">
+      <button type="button" data-pregunta="Que es la UASD?" class="suggestion-btn flex-shrink-0 px-4 py-2 bg-blue-50 text-blue-700 rounded-full text-xs font-semibold border border-blue-100 whitespace-nowrap">Que es la UASD?</button>
+      <button type="button" data-pregunta="Cual es la mision de la UASD?" class="suggestion-btn flex-shrink-0 px-4 py-2 bg-blue-50 text-blue-700 rounded-full text-xs font-semibold border border-blue-100 whitespace-nowrap">Mision</button>
+      <button type="button" data-pregunta="Cuales son los fines de la UASD?" class="suggestion-btn flex-shrink-0 px-4 py-2 bg-blue-50 text-blue-700 rounded-full text-xs font-semibold border border-blue-100 whitespace-nowrap">Fines</button>
+      <button type="button" data-pregunta="Que dice el estatuto sobre la autonomia?" class="suggestion-btn flex-shrink-0 px-4 py-2 bg-blue-50 text-blue-700 rounded-full text-xs font-semibold border border-blue-100 whitespace-nowrap">Autonomia</button>
+      <button type="button" data-pregunta="Como se organiza el gobierno universitario?" class="suggestion-btn flex-shrink-0 px-4 py-2 bg-blue-50 text-blue-700 rounded-full text-xs font-semibold border border-blue-100 whitespace-nowrap">Gobierno</button>
+      <button type="button" data-pregunta="Que es el Claustro Mayor?" class="suggestion-btn flex-shrink-0 px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-xs font-bold border border-blue-200 whitespace-nowrap">Claustro Mayor</button>
+      <button type="button" data-pregunta="Que funciones tiene el Consejo Universitario?" class="suggestion-btn flex-shrink-0 px-4 py-2 bg-blue-50 text-blue-700 rounded-full text-xs font-semibold border border-blue-100 whitespace-nowrap">Consejo Universitario</button>
+      <button type="button" data-pregunta="Que dice el estatuto sobre las facultades?" class="suggestion-btn flex-shrink-0 px-4 py-2 bg-blue-50 text-blue-700 rounded-full text-xs font-semibold border border-blue-100 whitespace-nowrap">Facultades</button>
+    </div>
+
+    <form id="chat-form" class="max-w-4xl mx-auto flex gap-2">
+      <input id="pregunta" type="text" placeholder="Ej: ¿Cómo se eligen las autoridades?" class="flex-1 border border-gray-300 rounded-full px-5 py-3 focus:outline-none text-sm transition-all">
+      <button id="enviar" type="submit" class="bg-[#002d72] text-white p-3 rounded-full shadow-lg disabled:opacity-60 disabled:cursor-not-allowed transition-all" aria-label="Enviar pregunta">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+        </svg>
+      </button>
+    </form>
+  </footer>
+
+  <script src="/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{
+  "name": "chatbot-uasd",
+  "version": "1.0.0",
+  "type": "module",
+  "dependencies": {
+    "@google-cloud/vertexai": "^1.12.0",
+    "@google/genai": "^2.7.0",
+    "@google/generative-ai": "^0.24.1",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "openai": "^5.23.2",
+    "pdf-parse": "^2.4.5",
+    "tesseract.js": "^7.0.0"
+  }
+}
