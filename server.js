@@ -5,11 +5,14 @@ import { PDFParse } from "pdf-parse";
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
+import cors from "cors";
 
 dotenv.config();
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
+app.use(cors());
 const app = express();
 const port = process.env.PORT || 3000;
 const provider = process.env.AI_PROVIDER || (process.env.OPENROUTER_API_KEY ? "openrouter" : "gemini");

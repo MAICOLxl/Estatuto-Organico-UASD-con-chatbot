@@ -1,3 +1,7 @@
+const API_URL = "https://estatuto-organico-uasd-con-chatbot.onrender.com";
+
+let esperandoRespuesta = false;
+
 let esperandoRespuesta = false;
 
 // Verificar que el servidor está disponible
